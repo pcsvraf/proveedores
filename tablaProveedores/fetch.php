@@ -1,7 +1,7 @@
 <?php
-$connect = mysqli_connect("localhost", "udb_proveedores", "s4uw28vk", "db_proveedores");
+$connect = mysqli_connect("localhost", "dgaeapuc_dgaea", "Dgaeapucv2020", "dgaeapuc_dgaea");
 mysqli_set_charset($connect, "utf8");
-$column = array("listadoAdmin.id", "listadoAdmin.categoria", "listadoAdmin.rut", "listadoAdmin.telefono", "listadoAdmin.direccion",
+$column = array("listadoAdmin.id", "listadoAdmin.rut", "listadoAdmin.telefono", "listadoAdmin.direccion",
     "listadoAdmin.atencionProveedor", "categoriasAdmin.nombre", "listadoAdmin.razonSocial");
 $query = "
  SELECT * FROM listadoAdmin
@@ -13,7 +13,6 @@ if (isset($_POST["is_category"])) {
 }
 if (isset($_POST["search"]["value"])) {
     $query .= '(listadoAdmin.id LIKE "%' . $_POST["search"]["value"] . '%" ';
-    $query .= 'OR listadoAdmin.categoria LIKE "%' . $_POST["search"]["value"] . '%" ';
     $query .= 'OR categoriasAdmin.nombre LIKE "%' . $_POST["search"]["value"] . '%" ';
     $query .= 'OR listadoAdmin.rut LIKE "%' . $_POST["search"]["value"] . '%" ';
     $query .= 'OR listadoAdmin.correo LIKE "%' . $_POST["search"]["value"] . '%" ';

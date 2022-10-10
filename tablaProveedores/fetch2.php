@@ -1,11 +1,11 @@
 <?php
-$connect = mysqli_connect("localhost", "udb_proveedores", "s4uw28vk", "db_proveedores");
+$connect = mysqli_connect("localhost", "dgaeapuc_dgaea", "Dgaeapucv2020", "dgaeapuc_dgaea");
 mysqli_set_charset($connect, "utf8");
-$column = array("listado.id", "listado.categoria", "listado.rut", "listado.telefono", "listado.direccion",
+$column = array("listado.id", "listado.rut", "listado.telefono", "listado.direccion",
     "listado.atencionProveedor", "categorias.nombre", "listado.razonSocial");
 $query = "
- SELECT * FROM listado 
- INNER JOIN categorias ON categorias.id = listado.idCategoria 
+ SELECT * FROM listado
+ INNER JOIN categorias ON categorias.id = listado.idCategoria
  ";
 $query .= " WHERE ";
 if (isset($_POST["is_category"])) {
@@ -13,7 +13,6 @@ if (isset($_POST["is_category"])) {
 }
 if (isset($_POST["search"]["value"])) {
     $query .= '(listado.id LIKE "%' . $_POST["search"]["value"] . '%" ';
-    $query .= 'OR listado.categoria LIKE "%' . $_POST["search"]["value"] . '%" ';
     $query .= 'OR categorias.nombre LIKE "%' . $_POST["search"]["value"] . '%" ';
     $query .= 'OR listado.rut LIKE "%' . $_POST["search"]["value"] . '%" ';
     $query .= 'OR listado.correo LIKE "%' . $_POST["search"]["value"] . '%" ';
